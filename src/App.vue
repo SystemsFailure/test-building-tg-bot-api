@@ -7,10 +7,10 @@
           <input type="text" placeholder="name">
           <input type="text" placeholder="email">
           <input type="text" placeholder="password">
-          <select name="Area" id="">
-            <option value="US"></option>
-            <option value="ES"></option>
-            <option value="Asia"></option>
+          <select name="Area" id="Area">
+            <option value="US">US</option>
+            <option value="ES">US</option>
+            <option value="Asia">US</option>
           </select>
         </form>
       </div>
