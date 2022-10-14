@@ -3,7 +3,7 @@
 </template>
 
 <script>
-const tg = window.Telegram.WebApp
+// const tg = window.Telegram.WebApp
 export default {
   name: 'App',
 }
