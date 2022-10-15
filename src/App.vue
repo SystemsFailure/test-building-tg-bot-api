@@ -4,9 +4,9 @@
       <div class="from-content">
         <h3>Registration</h3>
         <form action="" method="POST">
-          <input type="text" placeholder="name">
-          <input type="text" placeholder="email">
-          <input type="text" placeholder="password">
+          <input type="text" placeholder="name" v-model="queryName">
+          <input type="text" placeholder="email" v-model="queryEmail">
+          <input type="text" placeholder="password" v-model="queryPassword">
 <!--          <select name="Area" id="Area">-->
 <!--            <option value="US">US</option>-->
 <!--            <option value="ES">US</option>-->
@@ -20,10 +20,61 @@
 
 <script>
 const tg = window.Telegram.WebApp
+const regexEmail = '/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/'
+const regexName = '/^[a-zA-Z ]+$/'
+const regexPass = '(?=.*[!@#$%^&*])'
 export default {
   name: 'App',
+  data() {
+    return {
+      queryName: '',
+      queryEmail: '',
+      queryPassword: '',
+
+      queryResult: {
+        isName: false,
+        isEmail: false,
+        isPassword: false
+      }
+    }
+  },
+
   mounted() {
+    tg.MainButton.setParams({
+      text: 'Confirm'
+    })
     tg.MainButton.show()
+  },
+  watch: {
+    queryName: {
+      handler(newValue) {
+        this.queryResult.isName = regexEmail.test(newValue)
+      },
+      deep: true
+    },
+    queryEmail: {
+      handler(newValue) {
+        this.queryResult.isEmail = regexName.test(newValue)
+      },
+      deep: true
+    },
+    queryPassword: {
+      handler(newValue) {
+        this.queryResult.isPassword = regexPass.test(newValue)
+      },
+      deep: true
+    },
+    queryResult: {
+      handler() {
+        if(this.queryResult.isName && this.queryResult.isEmail && this.queryResult.isPassword) {
+          tg.MainButton.show()
+        } else {
+          console.log('Enter data please. Or check data which write')
+          tg.MainButton.hide()
+        }
+      },
+      deep: true
+    }
   }
 
 }
