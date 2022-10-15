@@ -54,7 +54,7 @@ form input {
   background: none;
   border: 1px solid gray;
   margin-top: 10px;
-  width: 500px;
+  width: auto;
   height: 20px;
   padding: 5px;
 }
