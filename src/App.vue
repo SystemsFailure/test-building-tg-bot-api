@@ -4,9 +4,27 @@
       <div class="from-content">
         <h3>Registration</h3>
         <form action="" method="POST">
-          <input type="text" placeholder="name" v-model="queryName">
-          <input type="text" placeholder="email" v-model="queryEmail">
-          <input type="text" placeholder="password" v-model="queryPassword">
+          <div class="inp-div-class item-div-class">
+            <input type="text" placeholder="name" v-model="queryName">
+            <Transition name="slide-up" mode="out-in">
+            <i v-if="queryResult.isName" class='far fa-check-circle' style='font-size:18px; color: #00ff62'></i>
+            <i v-else class='far fa-times-circle' style='font-size:18px; color:red'></i>
+            </Transition>
+          </div>
+          <div class="inp-div-class item-div-class">
+            <input type="text" placeholder="email" v-model="queryEmail">
+            <Transition name="slide-up" mode="out-in">
+            <i v-if="queryResult.isEmail" class='w3-container w3-center w3-animate-opacity far fa-check-circle' style='font-size:18px; color: #00ff62'></i>
+            <i v-else class='far fa-times-circle' style='font-size:18px; color:red'></i>
+            </Transition>
+          </div>
+          <div class="inp-div-class item-div-class">
+            <input type="text" placeholder="password" v-model="queryPassword">
+            <Transition name="slide-up" mode="out-in">
+            <i v-if="queryResult.isPassword" class='far fa-check-circle' style='font-size:18px; color: #00ff62'></i>
+            <i v-else class='far fa-times-circle' style='font-size:18px; color:red'></i>
+            </Transition>
+          </div>
 <!--          <select name="Area" id="Area">-->
 <!--            <option value="US">US</option>-->
 <!--            <option value="ES">US</option>-->
@@ -100,6 +118,22 @@ export default {
 </script>
 
 <style>
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
 body {
   background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
@@ -114,19 +148,37 @@ body {
   flex-direction: column;
 }
 
+.from-content {
+
+}
+
+.from-content h3 {
+  color: var(--tg-theme-text-color);
+}
+
 form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
+.inp-div-class {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 form input {
   background: none;
   border: 1px solid gray;
-  margin-top: 10px;
+
   width: auto;
   height: 20px;
   padding: 5px;
+  margin-right: 10px;
+  color: var(--tg-theme-text-color);
 }
 
 form select {
@@ -136,6 +188,7 @@ form select {
   width: 500px;
   height: 30px;
   padding: 5px;
+  color: var(--tg-theme-text-color);
 }
 
 form select option {
