@@ -61,7 +61,6 @@ export default {
     tg.MainButton.setParams({
       text: 'Confirm'
     })
-    tg.MainButton.show()
   },
   watch: {
     queryName: {
