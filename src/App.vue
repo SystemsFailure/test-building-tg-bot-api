@@ -48,6 +48,10 @@ export default {
   background: var(--tg-theme-bg-color);
 }
 
+.cont-select option {
+  background: var(--tg-theme-bg-color);
+}
+
 
 body {
   background: var(--tg-theme-bg-color);
