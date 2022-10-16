@@ -45,6 +45,7 @@ export default {
   padding: 5px;
   background: none;
   color: var(--tg-theme-text-color);
+  background: var(--tg-theme-bg-color);
 }
 
 
