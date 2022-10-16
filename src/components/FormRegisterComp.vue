@@ -31,7 +31,6 @@
 <script>
 const tg = window.Telegram.WebApp
 const regexEmail = '[a-z0-9]+@[a-z]+\\.[a-z]{2,3}'
-// const regexName = '/^[a-zA-Z ]+$/'
 const regexPass = '(?=.*[!@#$%^&*])'
 export default {
   name: 'App',
@@ -124,13 +123,6 @@ export default {
   transform: translateY(-30px);
 }
 
-
-
-
-.from-content {
-
-}
-
 .from-content h3 {
   color: var(--tg-theme-text-color);
 }
@@ -152,7 +144,6 @@ form {
 form input {
   background: none;
   border: 1px solid gray;
-
   width: auto;
   height: 20px;
   padding: 5px;
@@ -160,17 +151,4 @@ form input {
   color: var(--tg-theme-text-color);
 }
 
-form select {
-  background: none;
-  border: 1px solid gray;
-  margin-top: 10px;
-  width: 500px;
-  height: 30px;
-  padding: 5px;
-  color: var(--tg-theme-text-color);
-}
-
-form select option {
-
-}
 </style>

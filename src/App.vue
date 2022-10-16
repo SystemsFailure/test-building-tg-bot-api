@@ -1,25 +1,59 @@
 <template>
   <div class="main">
     <div class="cont-select area-select">
-      <select name="Area" id="Area">
-        <option value="US">Register</option>
-        <option value="ES">Auth</option>
+      <select name="Area" id="Area" v-model="querySelect">
+        <option value="Register">Register</option>
+        <option value="Auth">Auth</option>
       </select>
     </div>
     <div class="content">
-      <form-register-comp></form-register-comp>
+      <Transition name="fade" mode="out-in">
+        <form-register-comp v-if="resultSelected === 'reg'"></form-register-comp>
+        <form-auth-comp v-else></form-auth-comp>
+      </Transition>
     </div>
   </div>
 </template>
 
 <script>
 import FormRegisterComp from "@/components/FormRegisterComp";
+import FormAuthComp from "@/components/FormAuthComp";
 export default {
-  components: {FormRegisterComp}
+  data() {
+    return {
+      querySelect: '',
+      resultSelected: 'auth'
+    }
+  },
+  watch: {
+    querySelect: {
+      handler(newValue) {
+        if(newValue === 'Register') {
+          console.log(newValue)
+          this.resultSelected = 'reg'
+        } else {
+          console.log(newValue)
+          this.resultSelected = 'auth'
+        }
+      },
+      deep: true
+    }
+  },
+  components: {FormRegisterComp, FormAuthComp}
 }
 </script>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .main {
   height: 100vh;
   width: 100%;
