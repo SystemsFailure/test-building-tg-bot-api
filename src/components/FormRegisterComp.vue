@@ -23,11 +23,7 @@
           <i v-else class='far fa-times-circle' style='font-size:18px; color:red'></i>
         </Transition>
       </div>
-      <!--          <select name="Area" id="Area">-->
-      <!--            <option value="US">US</option>-->
-      <!--            <option value="ES">US</option>-->
-      <!--            <option value="Asia">US</option>-->
-      <!--          </select>-->
+
     </form>
   </div>
 </template>
