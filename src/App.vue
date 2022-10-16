@@ -20,8 +20,8 @@
 
 <script>
 const tg = window.Telegram.WebApp
-const regexEmail = '/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/'
-const regexName = '/^[a-zA-Z ]+$/'
+const regexEmail = '[a-z0-9]+@[a-z]+\\.[a-z]{2,3}'
+// const regexName = '/^[a-zA-Z ]+$/'
 const regexPass = '(?=.*[!@#$%^&*])'
 export default {
   name: 'App',
@@ -48,19 +48,37 @@ export default {
   watch: {
     queryName: {
       handler(newValue) {
-        this.queryResult.isName = regexEmail.test(newValue)
+        if(newValue !== '' && newValue.length < 16) {
+          this.queryResult.isName = true
+          console.log(this.queryResult.isName)
+        } else {
+          this.queryResult.isName = false
+          console.log(this.queryResult.isName)
+        }
       },
       deep: true
     },
     queryEmail: {
       handler(newValue) {
-        this.queryResult.isEmail = regexName.test(newValue)
+        if(newValue.match(regexEmail)) {
+          this.queryResult.isEmail = true
+          console.log(this.queryResult.isEmail)
+        } else {
+          this.queryResult.isEmail = false
+          console.log(this.queryResult.isEmail)
+        }
       },
       deep: true
     },
     queryPassword: {
       handler(newValue) {
-        this.queryResult.isPassword = regexPass.test(newValue)
+        if(newValue.match(regexPass)) {
+          this.queryResult.isPassword = true
+          console.log(this.queryResult.isPassword)
+        } else {
+          this.queryResult.isPassword = false
+          console.log(this.queryResult.isPassword)
+        }
       },
       deep: true
     },
@@ -68,9 +86,10 @@ export default {
       handler() {
         if(this.queryResult.isName && this.queryResult.isEmail && this.queryResult.isPassword) {
           tg.MainButton.show()
+          console.log('success')
         } else {
-          console.log('Enter data please. Or check data which write')
           tg.MainButton.hide()
+          console.log('no')
         }
       },
       deep: true
