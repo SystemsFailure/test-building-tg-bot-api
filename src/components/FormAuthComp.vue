@@ -7,15 +7,15 @@
           <div class="inp-div-class item-div-class">
             <input type="text" placeholder="email" v-model="queryEmail">
             <Transition name="slide-up" mode="out-in">
-              <i v-if="queryResult.isEmail" class='w3-container w3-center w3-animate-opacity far fa-check-circle' style='font-size:18px; color: #00ff62'></i>
-              <i v-else class='far fa-times-circle' style='font-size:18px; color:red'></i>
+              <i v-if="queryResult.isEmail" class='bi bi-check-lg' style='font-size:18px; color: #00ff62'></i>
+              <i v-else class='bi bi-x' style='font-size:18px; color:red'></i>
             </Transition>
           </div>
           <div class="inp-div-class item-div-class">
             <input type="text" placeholder="password" v-model="queryPassword">
             <Transition name="slide-up" mode="out-in">
-              <i v-if="queryResult.isPassword" class='far fa-check-circle' style='font-size:18px; color: #00ff62'></i>
-              <i v-else class='far fa-times-circle' style='font-size:18px; color:red'></i>
+              <i v-if="queryResult.isPassword" class='bi bi-check-lg' style='font-size:18px; color: #00ff62'></i>
+              <i v-else class='bi bi-x' style='font-size:18px; color:red'></i>
             </Transition>
           </div>
         </form>
