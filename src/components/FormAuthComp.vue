@@ -70,7 +70,7 @@ export default {
     },
     queryResult: {
       handler() {
-        if(this.queryResult.isName && this.queryResult.isEmail && this.queryResult.isPassword) {
+        if(this.queryResult.isEmail && this.queryResult.isPassword) {
           tg.MainButton.show()
           console.log('success')
         } else {
